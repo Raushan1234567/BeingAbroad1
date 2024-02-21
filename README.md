@@ -58,4 +58,31 @@ This project implements a RESTful API for an Institute Management System using J
 
 4. **Access Control:**
    - Upon successful authentication, the Admin gains access to other protected API endpoints, such as modifying and retrieving institute information.
+  
+# Dockerfile
 
+## Use the official OpenJDK 11 image as the base image
+FROM openjdk:11-jre-slim
+
+## Set the working directory inside the container
+WORKDIR /app
+
+## Copy the compiled JAR file into the container
+COPY target/institute-management-system.jar institute-management-system.jar
+
+## Define the command to run your application
+ENTRYPOINT ["java", "-jar", "institute-management-system.jar"]
+
+## Building the Docker Image
+# Build Command:
+
+
+docker build -t institute-management-system:latest .
+# Running the Docker Container
+# Run Command:
+
+docker run -p 9090:9090 -d --name institute-management-container institute-management-system:latest
+Stopping the Docker Container
+Stop Command:
+
+docker stop institute-management-container
