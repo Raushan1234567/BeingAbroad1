@@ -82,7 +82,7 @@ docker build -t institute-management-system:latest .
 # Run Command:
 
 docker run -p 9090:9090 -d --name institute-management-container institute-management-system:latest
-Stopping the Docker Container
-Stop Command:
+## Stopping the Docker Container
+# Stop Command:
 
 docker stop institute-management-container
