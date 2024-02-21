@@ -1,8 +1,5 @@
 # Institute Management System RESTful API
 
-
-
-
 This project implements a RESTful API for an Institute Management System using Java and Spring Boot. It allows for the registration, modification, and retrieval of institute information. 
 
 
@@ -61,28 +58,33 @@ This project implements a RESTful API for an Institute Management System using J
   
 # Dockerfile
 
-## Use the official OpenJDK 11 image as the base image
-FROM openjdk:11-jre-slim
+## Use the official OpenJDK 17 image as the base image
+FROM openjdk:17
 
 ## Set the working directory inside the container
 WORKDIR /app
 
 ## Copy the compiled JAR file into the container
-COPY target/institute-management-system.jar institute-management-system.jar
+COPY target/BeingAbroad-0.0.1-SNAPSHOT.jar BeingAbroad-0.0.1-SNAPSHOT.jar
+
+## Copy application properties to the container
+COPY src/main/resources/application.properties /app/config/application.properties
 
 ## Define the command to run your application
-ENTRYPOINT ["java", "-jar", "institute-management-system.jar"]
+CMD java -jar BeingAbroad-0.0.1-SNAPSHOT.jar
+
 
 ## Building the Docker Image
 # Build Command:
 
-
-docker build -t institute-management-system:latest .
+docker build -t being-abroad-app:latest .
 # Running the Docker Container
 # Run Command:
 
-docker run -p 9090:9090 -d --name institute-management-container institute-management-system:latest
+docker run -p 9090:9090 -d --name being-abroad-container being-abroad-app:latest
+
 ## Stopping the Docker Container
 # Stop Command:
 
-docker stop institute-management-container
+docker stop being-abroad-container
+
